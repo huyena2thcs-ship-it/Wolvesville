@@ -23,11 +23,7 @@
       --text-sub: #94a3b8;
       --card-border: rgba(230, 25, 75, 0.3);
     }
-<!-- KHUNG HIỂN THỊ ẢNH PHÓNG TO -->
-  <div id="imgModal" class="image-modal" onclick="closeImgModal()">
-    <span class="close-modal-btn">&times;</span>
-    <img id="modalFullImg" class="modal-content-img" src="" alt="Full Size">
-  </div>
+
     body {
       background: var(--bg-dark);
       font-family: 'Montserrat', sans-serif;
@@ -75,7 +71,7 @@
     }
     .main-app.active { opacity: 1; pointer-events: auto; }
 
-    /* SECTION 1: TOP HERO (ẢNH NỀN CHÌM + BẢNG THÔNG SỐ ĐỎ - LẤY ANH 6) */
+    /* SECTION 1: TOP HERO (ẢNH NỀN CHÌM + BẢNG THÔNG SỐ ĐỎ - LẤY ANH 2.JFIF) */
     .hero-top {
       position: relative; width: 100%; height: 380px; border-radius: 20px;
       overflow: hidden; background: #1a050b; border: 1px solid var(--card-border);
@@ -85,6 +81,7 @@
     .hero-bg-img {
       position: absolute; right: 0; top: 0; width: 65%; height: 100%;
       object-fit: cover; filter: brightness(0.7) contrast(1.1);
+      cursor: pointer;
       mask-image: linear-gradient(to left, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
       -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
     }
@@ -121,7 +118,7 @@
       font-size: 12px; color: #cbd5e1; margin-top: 10px; line-height: 1.5;
     }
 
-    /* SECTION 2: MIDDLE SECTION (HALFTONE BACKGROUND + ẢNH TRÀN KHUNG LA ANH 1.PNG) */
+    /* SECTION 2: MIDDLE SECTION (HALFTONE BACKGROUND + ẢNH TRÀN KHUNG LA ANH 1.JFIF) */
     .hero-mid {
       position: relative; width: 100%; min-height: 320px; border-radius: 20px;
       background: linear-gradient(135deg, #1f0810 0%, #0a0204 100%);
@@ -144,6 +141,7 @@
     .mid-img-wrapper {
       width: 50%; height: 280px; border-radius: 16px; overflow: hidden;
       box-shadow: 0 8px 25px rgba(0,0,0,0.6); border: 2px solid var(--red-accent);
+      cursor: pointer;
     }
     .mid-img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
 
@@ -164,7 +162,7 @@
     }
     .player-cover {
       width: 55px; height: 55px; border-radius: 12px; object-fit: cover;
-      border: 2px solid var(--gold-accent);
+      border: 2px solid var(--gold-accent); cursor: pointer;
     }
     .player-title-box h3 { font-size: 14px; font-weight: 800; color: #fff; }
     .player-title-box p { font-size: 11px; color: var(--text-sub); }
@@ -183,7 +181,7 @@
       border-radius: 50%; font-size: 16px; cursor: pointer; font-family: 'Bungee';
     }
 
-    /* Khung Lưới 10 Ô Ảnh Đại Diện (Từ anh 1.png -> anh 9.png + anh 1.png) */
+    /* Khung Lưới 10 Ô Ảnh Đại Diện (Lấy từ anh 1.jfif -> anh 9.jfif) */
     .avatars-box {
       background: rgba(20, 8, 12, 0.95); border: 1px solid var(--card-border);
       border-radius: 20px; padding: 18px; box-shadow: 0 10px 30px rgba(0,0,0,0.6);
@@ -199,6 +197,7 @@
     .avatar-item {
       background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1);
       border-radius: 10px; padding: 4px; text-align: center; transition: transform 0.2s;
+      cursor: pointer;
     }
     .avatar-item:hover { transform: translateY(-3px); border-color: var(--red-accent); }
     .avatar-item img {
@@ -235,6 +234,25 @@
       padding: 10px 14px; border-radius: 0 10px 10px 0; font-size: 12px;
     }
 
+    /* CSS CHO KHUNG PHÓNG TO ẢNH (LIGHTBOX MODAL) */
+    .image-modal {
+      display: none; position: fixed; z-index: 1000;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.92); backdrop-filter: blur(8px);
+      justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease;
+    }
+    .image-modal.show { display: flex; opacity: 1; }
+    .modal-content-img {
+      max-width: 90%; max-height: 85vh; border-radius: 12px;
+      box-shadow: 0 0 30px rgba(230, 25, 75, 0.8);
+      border: 2px solid var(--red-accent); transform: scale(0.85); transition: transform 0.3s ease;
+    }
+    .image-modal.show .modal-content-img { transform: scale(1); }
+    .close-modal-btn {
+      position: absolute; top: 20px; right: 25px; color: #fff;
+      font-size: 35px; font-weight: bold; cursor: pointer; user-select: none;
+    }
+
     /* RESPONSIVE CHO ĐIỆN THOẠI (<768px) */
     @media (max-width: 768px) {
       .hero-top { height: auto; padding: 15px; display: flex; flex-direction: column; gap: 15px; }
@@ -264,7 +282,7 @@
   <!-- GIAO DIỆN CHÍNH -->
   <div class="main-app" id="mainApp">
 
-    <!-- HERO 1: BẢNG THÔNG SỐ + ẢNH CHÌM NỀN (LẤY ANH 2.PNG) -->
+    <!-- HERO 1: BẢNG THÔNG SỐ + ẢNH CHÌM NỀN (LẤY ANH 2.JFIF) -->
     <div class="hero-top">
       <div class="stats-card-left">
         <span class="card-badge">Game Statistics</span>
@@ -287,17 +305,17 @@
         <p>Thách thức mọi giới hạn trong đêm trăng ma sói. Đừng bỏ cuộc khi trận đấu chưa kết thúc!</p>
       </div>
 
-      <img class="hero-bg-img" src="image/anh 2.jfif" onerror="smartPngFix(this, 'anh 2')" alt="Match Cover">
+      <img class="hero-bg-img" src="image/anh 2.jfif" onerror="smartJfifFix(this, 'anh 2')" alt="Match Cover">
     </div>
 
-    <!-- HERO 2: KHỐI CHẤM HALFTONE + ẢNH TRÀN KHUNG (ĐÃ ĐỔI THÀNH ANH 1.PNG) -->
+    <!-- HERO 2: KHỐI CHẤM HALFTONE + ẢNH TRÀN KHUNG (ANH 1.JFIF) -->
     <div class="hero-mid">
       <div class="mid-text">
         <h2>KEEP MOVING FORWARD ON A STABLE JOURNEY</h2>
         <p>Mỗi bước đi trong đêm tối đều là sự tính toán. Luôn tiến về phía trước dù bạn làm Dân làng hay Sói!</p>
       </div>
       <div class="mid-img-wrapper">
-        <img src="image/anh 1.jfif" onerror="smartPngFix(this, 'anh 1')" alt="Mid Photo">
+        <img src="image/anh 1.jfif" onerror="smartJfifFix(this, 'anh 1')" alt="Mid Photo">
       </div>
     </div>
 
@@ -308,7 +326,7 @@
       <div class="music-app-card">
         <div>
           <div class="player-header">
-            <img class="player-cover" src="image/anh 1.png" onerror="smartPngFix(this, 'anh 1')" alt="Cover">
+            <img class="player-cover" src="image/anh 1.jfif" onerror="smartJfifFix(this, 'anh 1')" alt="Cover">
             <div class="player-title-box">
               <h3>Upside Down</h3>
               <p>JVNA — Wolvesville Track</p>
@@ -326,20 +344,20 @@
         </div>
       </div>
 
-      <!-- Lưới 10 Ô Ảnh Đại Diện (Từ anh 1.png đến anh 9.png) -->
+      <!-- Lưới 10 Ô Ảnh Đại Diện (Đọc từ anh 1.jfif -> anh 9.jfif) -->
       <div class="avatars-box">
         <div class="avatars-header">🐺 10 FRIENDS IN ROOM</div>
         <div class="avatar-grid">
-          <div class="avatar-item"><img src="image/anh 1.jfif" onerror="smartPngFix(this, 'anh 1')"><span>Shadow</span></div>
-          <div class="avatar-item"><img src="image/anh 2.jfif" onerror="smartPngFix(this, 'anh 2')"><span>Vinh</span></div>
-          <div class="avatar-item"><img src="image/anh 3.jfif" onerror="smartPngFix(this, 'anh 3')"><span>Kamo</span></div>
-          <div class="avatar-item"><img src="image/anh 4.jfif" onerror="smartPngFix(this, 'anh 4')"><span>Doubt</span></div>
-          <div class="avatar-item"><img src="image/anh 5.jfif" onerror="smartPngFix(this, 'anh 5')"><span>Noone</span></div>
-          <div class="avatar-item"><img src="image/anh 6.jfif" onerror="smartPngFix(this, 'anh 6')"><span>Darling</span></div>
-          <div class="avatar-item"><img src="image/anh 7.jfif" onerror="smartPngFix(this, 'anh 7')"><span>Wolf</span></div>
-          <div class="avatar-item"><img src="image/anh 8.jfif" onerror="smartPngFix(this, 'anh 8')"><span>Red</span></div>
-          <div class="avatar-item"><img src="image/anh 9.jfif" onerror="smartPngFix(this, 'anh 9')"><span>Knight</span></div>
-          <div class="avatar-item"><img src="image/anh 1.jfif" onerror="smartPngFix(this, 'anh 1')"><span>Boss</span></div>
+          <div class="avatar-item"><img src="image/anh 1.jfif" onerror="smartJfifFix(this, 'anh 1')"><span>Shadow</span></div>
+          <div class="avatar-item"><img src="image/anh 2.jfif" onerror="smartJfifFix(this, 'anh 2')"><span>Vinh</span></div>
+          <div class="avatar-item"><img src="image/anh 3.jfif" onerror="smartJfifFix(this, 'anh 3')"><span>Kamo</span></div>
+          <div class="avatar-item"><img src="image/anh 4.jfif" onerror="smartJfifFix(this, 'anh 4')"><span>Doubt</span></div>
+          <div class="avatar-item"><img src="image/anh 5.jfif" onerror="smartJfifFix(this, 'anh 5')"><span>Noone</span></div>
+          <div class="avatar-item"><img src="image/anh 6.jfif" onerror="smartJfifFix(this, 'anh 6')"><span>Darling</span></div>
+          <div class="avatar-item"><img src="image/anh 7.jfif" onerror="smartJfifFix(this, 'anh 7')"><span>Wolf</span></div>
+          <div class="avatar-item"><img src="image/anh 8.jfif" onerror="smartJfifFix(this, 'anh 8')"><span>Red</span></div>
+          <div class="avatar-item"><img src="image/anh 9.jfif" onerror="smartJfifFix(this, 'anh 9')"><span>Knight</span></div>
+          <div class="avatar-item"><img src="image/anh 1.jfif" onerror="smartJfifFix(this, 'anh 1')"><span>Boss</span></div>
         </div>
       </div>
 
@@ -347,7 +365,7 @@
 
     <!-- TƯỜNG GHIM LỜI NHẮN -->
     <div class="chat-section">
-      <h3>💬 LỜI NHẮN KHIÊU CHIẾN & CỜ TƯỜNG</h3>
+      <h3>💬 LỜI NHẮN KHIÊU CHIẾN</h3>
       
       <div class="input-box">
         <input type="text" id="chatInput" class="chat-input" placeholder="Viết lời khiêu chiến cho đối thủ...">
@@ -366,11 +384,18 @@
 
   </div>
 
-  <!-- CHỈ ĐỌC FILE NHẠC MP3 TRONG THƯ MỤC music/ -->
+  <!-- KHUNG HIỂN THỊ ẢNH PHÓNG TO (LIGHTBOX MODAL) -->
+  <div id="imgModal" class="image-modal" onclick="closeImgModal()">
+    <span class="close-modal-btn">&times;</span>
+    <img id="modalFullImg" class="modal-content-img" src="" alt="Full Size">
+  </div>
+
+  <!-- BỘ PHÁT NHẠC MP3 NỘI BỘ -->
   <audio id="bgmusic" loop preload="auto">
     <source src="music/upsidedown.mp3" type="audio/mpeg">
     <source src="music/UpsideDown.mp3" type="audio/mpeg">
     <source src="music/music.mp3" type="audio/mpeg">
+    <source src="music/thangcuoi.mp3" type="audio/mpeg">
   </audio>
 
   <script>
@@ -421,14 +446,16 @@
       audio.currentTime = clickPos * audio.duration;
     }
 
-    // Tự động kiểm tra file dạng "anh 1.png", "anh1.png", "Anh 1.png" hoặc "anh 1.PNG"
-    function smartPngFix(img, name) {
+    // TỰ ĐỘNG SỬA ĐƯỜNG DẪN ẢNH ĐỊNH DẠNG .jfif, .JFIF, .jpg, .png
+    function smartJfifFix(img, name) {
       const cleanName = name.replace(/\s+/g, ''); // Ví dụ: "anh1" từ "anh 1"
       const variations = [
         'image/' + cleanName + '.jfif',
         'image/' + cleanName + '.JFIF',
         'image/' + name + '.JFIF',
-        'image/' + name + '.jfif'
+        'image/' + name + '.jfif',
+        'image/' + cleanName + '.jpg',
+        'image/' + cleanName + '.png'
       ];
 
       let step = parseInt(img.dataset.step || "0");
@@ -436,9 +463,30 @@
         img.dataset.step = step + 1;
         img.src = variations[step];
       } else {
-        img.onerror = null;
+        img.onerror = null; // Tránh lặp vô tận gây lỗi 429
       }
     }
+
+    // TÍNH NĂNG BẤM VÀO ẢNH ĐỂ PHÓNG TO TOÀN MÀN HÌNH
+    function openImgModal(src) {
+      const modal = document.getElementById('imgModal');
+      const fullImg = document.getElementById('modalFullImg');
+      fullImg.src = src;
+      modal.classList.add('show');
+    }
+
+    function closeImgModal() {
+      const modal = document.getElementById('imgModal');
+      modal.classList.remove('show');
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      document.addEventListener('click', function(e) {
+        if (e.target.tagName === 'IMG' && e.target.id !== 'modalFullImg') {
+          openImgModal(e.target.src);
+        }
+      });
+    });
 
     function postMessage() {
       const input = document.getElementById('chatInput');
@@ -469,6 +517,7 @@
       msgs.forEach(msg => {
         html += `
           <div class="note-card">
+        
             <strong style="color:var(--gold-accent);">Tôi (Chủ Phòng):</strong> ${msg}
           </div>
         `;
