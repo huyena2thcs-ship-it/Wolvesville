@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Wolvesville - Shadow vs Vinh Duel</title>
   
+  <!-- Font chữ chuẩn Ma Sói & Modern Gaming Layout -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Montserrat:wght@400;600;700;800;900&family=Nunito:wght@700;900&display=swap" rel="stylesheet">
@@ -80,3 +81,423 @@
       overflow: hidden; background: #1a050b; border: 1px solid var(--card-border);
       box-shadow: 0 10px 30px rgba(0,0,0,0.7);
     }
+    
+    .hero-bg-img {
+      position: absolute; right: 0; top: 0; width: 65%; height: 100%;
+      object-fit: cover; filter: brightness(0.7) contrast(1.1);
+      cursor: pointer;
+      mask-image: linear-gradient(to left, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
+      -webkit-mask-image: linear-gradient(to left, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
+    }
+
+    .stats-card-left {
+      position: absolute; left: 20px; top: 20px; width: 280px;
+      background: rgba(45, 10, 20, 0.9); border: 1px solid rgba(230, 25, 75, 0.4);
+      border-radius: 16px; padding: 16px; backdrop-filter: blur(12px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.5); z-index: 2;
+    }
+
+    .card-badge {
+      display: inline-block; background: var(--red-accent); color: #fff;
+      font-size: 9px; font-weight: 800; padding: 3px 8px; border-radius: 10px;
+      text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px;
+    }
+
+    .stats-row {
+      display: flex; justify-content: space-between; font-size: 12px;
+      padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .stats-row:last-child { border-bottom: none; }
+    .stats-label { color: var(--text-sub); }
+    .stats-value { font-weight: 800; color: var(--gold-accent); }
+
+    .hero-top-title {
+      position: absolute; left: 320px; top: 30px; z-index: 2; max-width: 320px;
+    }
+    .hero-top-title h1 {
+      font-family: 'Bungee', cursive; font-size: 26px; color: #fff; line-height: 1.2;
+    }
+    .hero-top-title p {
+      font-size: 12px; color: #cbd5e1; margin-top: 10px; line-height: 1.5;
+    }
+
+    /* SECTION 2: MIDDLE SECTION */
+    .hero-mid {
+      position: relative; width: 100%; min-height: 320px; border-radius: 20px;
+      background: linear-gradient(135deg, #1f0810 0%, #0a0204 100%);
+      border: 1px solid var(--card-border); overflow: hidden; display: flex;
+      align-items: center; padding: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+    }
+
+    .hero-mid::before {
+      content: ''; position: absolute; left: 0; top: 0; width: 50%; height: 100%;
+      background-image: radial-gradient(rgba(230, 25, 75, 0.25) 2px, transparent 2px);
+      background-size: 14px 14px; opacity: 0.6; pointer-events: none;
+    }
+
+    .mid-text { width: 50%; z-index: 2; padding-right: 20px; }
+    .mid-text h2 {
+      font-family: 'Bungee', cursive; font-size: 22px; color: #fff; margin-bottom: 12px;
+    }
+    .mid-text p { font-size: 12px; color: var(--text-sub); line-height: 1.6; }
+
+    .mid-img-wrapper {
+      width: 50%; height: 280px; border-radius: 16px; overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.6); border: 2px solid var(--red-accent);
+      cursor: pointer;
+    }
+    .mid-img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* SECTION 3: MUSIC PLAYER */
+    .hero-bottom-grid {
+      display: grid; grid-template-columns: 1fr 1.2fr; gap: 20px; width: 100%;
+    }
+
+    .music-app-card {
+      background: rgba(20, 8, 12, 0.95); border: 1px solid var(--card-border);
+      border-radius: 20px; padding: 18px; box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+      display: flex; flex-direction: column; justify-content: space-between;
+    }
+
+    .player-header {
+      display: flex; align-items: center; gap: 12px; margin-bottom: 15px;
+    }
+    .player-cover {
+      width: 55px; height: 55px; border-radius: 12px; object-fit: cover;
+      border: 2px solid var(--gold-accent); cursor: pointer;
+    }
+    .player-title-box h3 { font-size: 14px; font-weight: 800; color: #fff; }
+    .player-title-box p { font-size: 11px; color: var(--text-sub); }
+
+    .progress-bar-container { width: 100%; margin: 10px 0; }
+    .seek-slider {
+      -webkit-appearance: none;
+      width: 100%; height: 6px; border-radius: 3px;
+      background: rgba(255, 255, 255, 0.2);
+      outline: none; cursor: pointer;
+    }
+    .seek-slider::-webkit-slider-thumb {
+      -webkit-appearance: none; appearance: none;
+      width: 14px; height: 14px; border-radius: 50%;
+      background: var(--red-accent); cursor: pointer;
+      box-shadow: 0 0 8px rgba(230, 25, 75, 0.8);
+    }
+
+    .player-controls { display: flex; justify-content: space-between; align-items: center; }
+    .btn-play {
+      background: var(--red-accent); color: #fff; border: none; width: 44px; height: 44px;
+      border-radius: 50%; font-size: 16px; cursor: pointer; font-family: 'Bungee';
+      display: flex; justify-content: center; align-items: center;
+      box-shadow: 0 4px 12px rgba(230, 25, 75, 0.5);
+    }
+
+    .avatars-box {
+      background: rgba(20, 8, 12, 0.95); border: 1px solid var(--card-border);
+      border-radius: 20px; padding: 18px; box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    }
+    .avatars-header {
+      font-family: 'Bungee', cursive; font-size: 14px; color: var(--gold-accent);
+      margin-bottom: 12px;
+    }
+
+    .avatar-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+    .avatar-item {
+      background: rgba(0,0,0,0.4); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px; padding: 4px; text-align: center; transition: transform 0.2s;
+      cursor: pointer;
+    }
+    .avatar-item:hover { transform: translateY(-3px); border-color: var(--red-accent); }
+    .avatar-item img { width: 100%; height: 60px; object-fit: cover; border-radius: 6px; display: block; }
+    .avatar-item span {
+      display: block; font-size: 9px; font-weight: 700; color: #e2e8f0;
+      margin-top: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+
+    /* SECTION 4: TƯỜNG GHIM LỜI NHẮN */
+    .chat-section {
+      width: 100%; background: rgba(20, 8, 12, 0.95); border: 1px solid var(--card-border);
+      border-radius: 20px; padding: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    }
+    .chat-section h3 { font-family: 'Bungee', cursive; font-size: 16px; color: #fff; margin-bottom: 15px; }
+
+    .input-box { display: flex; gap: 10px; margin-bottom: 15px; }
+    .chat-input {
+      flex: 1; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 12px; padding: 12px 16px; color: #fff; font-family: inherit; font-size: 13px;
+    }
+    .chat-input:focus { outline: none; border-color: var(--red-accent); }
+    .btn-send {
+      background: var(--red-accent); color: #fff; border: none; padding: 0 22px;
+      font-family: 'Bungee'; border-radius: 12px; cursor: pointer;
+    }
+
+    .notes-list { display: flex; flex-direction: column; gap: 10px; max-height: 220px; overflow-y: auto; }
+    .note-card {
+      background: rgba(45, 10, 20, 0.6); border-left: 3px solid var(--red-accent);
+      padding: 10px 14px; border-radius: 0 10px 10px 0; font-size: 12px;
+    }
+
+    /* LIGHTBOX MODAL PHÓNG TO ẢNH */
+    .image-modal {
+      display: none; position: fixed; z-index: 1000;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.92); backdrop-filter: blur(8px);
+      justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease;
+    }
+    .image-modal.show { display: flex; opacity: 1; }
+    .modal-content-img {
+      max-width: 90%; max-height: 85vh; border-radius: 12px;
+      box-shadow: 0 0 30px rgba(230, 25, 75, 0.8);
+      border: 2px solid var(--red-accent); transform: scale(0.85); transition: transform 0.3s ease;
+    }
+    .image-modal.show .modal-content-img { transform: scale(1); }
+    .close-modal-btn {
+      position: absolute; top: 20px; right: 25px; color: #fff;
+      font-size: 35px; font-weight: bold; cursor: pointer; user-select: none;
+    }
+
+    @media (max-width: 768px) {
+      .hero-top { height: auto; padding: 15px; display: flex; flex-direction: column; gap: 15px; }
+      .hero-bg-img { position: relative; width: 100%; height: 180px; mask-image: none; border-radius: 12px; }
+      .stats-card-left { position: relative; left: 0; top: 0; width: 100%; }
+      .hero-top-title { position: relative; left: 0; top: 0; max-width: 100%; }
+
+      .hero-mid { flex-direction: column; gap: 15px; text-align: center; }
+      .mid-text, .mid-img-wrapper { width: 100%; padding: 0; }
+      .mid-img-wrapper { height: 200px; }
+
+      .hero-bottom-grid { grid-template-columns: 1fr; }
+      .avatar-grid { grid-template-columns: repeat(5, 1fr); }
+      .avatar-item img { height: 50px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- MÀN HÌNH BẮT ĐẦU GAME -->
+  <div class="start-screen" id="startScreen">
+    <div class="game-logo">WOLVESVILLE</div>
+    <p style="color: var(--text-sub); font-size: 13px; margin-bottom: 20px;">SEASON 79 • SHADOW VS VINH DUEL</p>
+    <button class="btn-start" onclick="enterGame()">BẮT ĐẦU TRẬN ĐẤU ⚔️</button>
+  </div>
+
+  <!-- GIAO DIỆN CHÍNH -->
+  <div class="main-app" id="mainApp">
+
+    <div class="hero-top">
+      <div class="stats-card-left">
+        <span class="card-badge">Game Statistics</span>
+        <div class="stats-row"><span class="stats-label">Thắng trận</span><span class="stats-value">44% (3,670)</span></div>
+        <div class="stats-row"><span class="stats-label">Thua trận</span><span class="stats-value" style="color:var(--red-accent);">54% (4,500)</span></div>
+        <div class="stats-row"><span class="stats-label">Bỏ trốn</span><span class="stats-value">2% (126)</span></div>
+      </div>
+      <div class="hero-top-title">
+        <h1>KEEP WRITING DOWN YOUR DREAM</h1>
+        <p>Thách thức mọi giới hạn trong đêm trăng ma sói. Đừng bỏ cuộc khi trận đấu chưa kết thúc!</p>
+      </div>
+      <img class="hero-bg-img" src="image/anh 6.jfif" onerror="smartJfifFix(this, 'anh 6')" alt="Match Cover">
+    </div>
+
+    <div class="hero-mid">
+      <div class="mid-text">
+        <h2>KEEP MOVING FORWARD ON A STABLE JOURNEY</h2>
+        <p>Mỗi bước đi trong đêm tối đều là sự tính toán. Luôn tiến về phía trước dù bạn làm Dân làng hay Sói!</p>
+      </div>
+      <div class="mid-img-wrapper">
+        <img src="image/anh 8.jfif" onerror="smartJfifFix(this, 'anh 8')" alt="Mid Photo">
+      </div>
+    </div>
+
+    <div class="hero-bottom-grid">
+      
+      <div class="music-app-card">
+        <div>
+          <div class="player-header">
+            <img class="player-cover" src="image/anh 1.jfif" onerror="smartJfifFix(this, 'anh 1')" alt="Cover">
+            <div class="player-title-box">
+              <h3>The Upside Down</h3>
+              <p>Biometrix x Sarah De Warren</p>
+            </div>
+          </div>
+
+          <div class="progress-bar-container">
+            <input type="range" id="seekSlider" class="seek-slider" value="0" max="100" oninput="seekAudio(this.value)">
+          </div>
+        </div>
+
+        <div class="player-controls">
+          <span style="font-size:11px; color:var(--text-sub);" id="timeDisplay">0:00 / 0:00</span>
+          <button class="btn-play" id="playBtn" onclick="toggleAudio()">▶</button>
+        </div>
+      </div>
+
+      <div class="avatars-box">
+        <div class="avatars-header">🐺 10 FRIENDS IN ROOM</div>
+        <div class="avatar-grid">
+          <div class="avatar-item"><img src="image/anh 1.jfif" onerror="smartJfifFix(this, 'anh 1')"><span>Shadow</span></div>
+          <div class="avatar-item"><img src="image/anh 2.jfif" onerror="smartJfifFix(this, 'anh 2')"><span>Vinh</span></div>
+          <div class="avatar-item"><img src="image/anh 3.jfif" onerror="smartJfifFix(this, 'anh 3')"><span>Kamo</span></div>
+          <div class="avatar-item"><img src="image/anh 4.jfif" onerror="smartJfifFix(this, 'anh 4')"><span>Doubt</span></div>
+          <div class="avatar-item"><img src="image/anh 5.jfif" onerror="smartJfifFix(this, 'anh 5')"><span>Noone</span></div>
+          <div class="avatar-item"><img src="image/anh 6.jfif" onerror="smartJfifFix(this, 'anh 6')"><span>Darling</span></div>
+          <div class="avatar-item"><img src="image/anh 7.jfif" onerror="smartJfifFix(this, 'anh 7')"><span>Wolf</span></div>
+          <div class="avatar-item"><img src="image/anh 8.jfif" onerror="smartJfifFix(this, 'anh 8')"><span>Red</span></div>
+          <div class="avatar-item"><img src="image/anh 9.jfif" onerror="smartJfifFix(this, 'anh 9')"><span>Knight</span></div>
+          <div class="avatar-item"><img src="image/anh 1.jfif" onerror="smartJfifFix(this, 'anh 1')"><span>Boss</span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="chat-section">
+      <h3>💬 LỜI NHẮN KHIÊU CHIẾN </h3>
+      <div class="input-box">
+        <input type="text" id="chatInput" class="chat-input" placeholder="Viết lời khiêu chiến cho đối thủ...">
+        <button class="btn-send" onclick="postMessage()">GỬI</button>
+      </div>
+      <div class="notes-list" id="msgList">
+        <div class="note-card"><strong style="color:var(--gold-accent);">Shadow 🔥:</strong> Trận này tôi làm Sói thì ông chuẩn bị nhận đạn nhé! NO LUCK ONLY SKILL!</div>
+        <div class="note-card" style="border-left-color: #22d3ee;"><strong style="color:#22d3ee;">Vinh ⚡:</strong> Gặp nhau ở vòng treo cổ em trai! PLAY SMART - STAY STRONG!</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="imgModal" class="image-modal" onclick="closeImgModal()">
+    <span class="close-modal-btn">&times;</span>
+    <img id="modalFullImg" class="modal-content-img" src="" alt="Full Size">
+  </div>
+
+  <!-- THẺ ÂM THANH ĐÃ ĐƯỢC ĐỐI CHIẾU CHÍNH XÁC VỚI FILE BẠN ĐÃ TẢI LÊN -->
+  <audio id="bgmusic" loop preload="auto">
+    <source src="music/Biometrix x Sarah De Warren - The Upside Down_2.mp3" type="audio/mpeg">
+    <source src="music/Biometrix x Sarah De Warren - The Upside Down.mp3" type="audio/mpeg">
+    <source src="music/upsidedown.mp3" type="audio/mpeg">
+    <source src="music/music.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    const audio = document.getElementById('bgmusic');
+    const playBtn = document.getElementById('playBtn');
+    const seekSlider = document.getElementById('seekSlider');
+    const timeDisplay = document.getElementById('timeDisplay');
+
+    // Mở Game & Phát Âm Thanh An Toàn
+    function enterGame() {
+      document.getElementById('startScreen').classList.add('hide');
+      loadMessages();
+
+      // Phát nhạc sau khi ẩn màn hình đen
+      audio.play().then(() => {
+        playBtn.innerText = '⏸';
+      }).catch(err => {
+        console.log("Autoplay blocked or file not found:", err);
+        playBtn.innerText = '▶';
+      });
+    }
+
+    // Nút Bật / Tắt Nhạc Thủ Công
+    function toggleAudio() {
+      if (audio.paused) {
+        audio.play().then(() => {
+          playBtn.innerText = '⏸';
+        }).catch(err => console.log(err));
+      } else {
+        audio.pause();
+        playBtn.innerText = '▶';
+      }
+    }
+
+    // Cập Nhật Thanh Tua Nhạc & Thời Gian
+    audio.addEventListener('timeupdate', () => {
+      if (audio.duration && !isNaN(audio.duration)) {
+        const pct = (audio.currentTime / audio.duration) * 100;
+        seekSlider.value = pct;
+        
+        let curMins = Math.floor(audio.currentTime / 60);
+        let curSecs = Math.floor(audio.currentTime % 60);
+        let durMins = Math.floor(audio.duration / 60);
+        let durSecs = Math.floor(audio.duration % 60);
+
+        timeDisplay.innerText = `${curMins}:${curSecs < 10 ? '0' : ''}${curSecs} / ${durMins}:${durSecs < 10 ? '0' : ''}${durSecs}`;
+      }
+    });
+
+    // Kéo Thanh Thời Gian Để Tua
+    function seekAudio(value) {
+      if (audio.duration && !isNaN(audio.duration)) {
+        audio.currentTime = (value / 100) * audio.duration;
+      }
+    }
+
+    // Sửa Tên Ảnh Định Dạng .jfif, .jpg, .png
+    function smartJfifFix(img, name) {
+      const cleanName = name.replace(/\s+/g, '');
+      const variations = [
+        'image/' + cleanName + '.jfif',
+        'image/' + cleanName + '.JFIF',
+        'image/' + name + '.JFIF',
+        'image/' + name + '.jfif',
+        'image/' + cleanName + '.jpg',
+        'image/' + cleanName + '.png'
+      ];
+
+      let step = parseInt(img.dataset.step || "0");
+      if (step < variations.length) {
+        img.dataset.step = step + 1;
+        img.src = variations[step];
+      } else {
+        img.onerror = null;
+      }
+    }
+
+    // Lightbox Phóng To Ảnh
+    function openImgModal(src) {
+      document.getElementById('modalFullImg').src = src;
+      document.getElementById('imgModal').classList.add('show');
+    }
+
+    function closeImgModal() {
+      document.getElementById('imgModal').classList.remove('show');
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      document.addEventListener('click', function(e) {
+        if (e.target.tagName === 'IMG' && e.target.id !== 'modalFullImg') {
+          openImgModal(e.target.src);
+        }
+      });
+    });
+
+    // Lời Nhắn
+    function postMessage() {
+      const input = document.getElementById('chatInput');
+      const text = input.value.trim();
+      if (!text) return;
+
+      let msgs = JSON.parse(localStorage.getItem('wv_chat_notes') || '[]');
+      msgs.unshift(text);
+
+      localStorage.setItem('wv_chat_notes', JSON.stringify(msgs));
+      input.value = '';
+      loadMessages();
+    }
+
+    function loadMessages() {
+      const list = document.getElementById('msgList');
+      let msgs = JSON.parse(localStorage.getItem('wv_chat_notes') || '[]');
+
+      let html = `
+        <div class="note-card"><strong style="color:var(--gold-accent);">Shadow 🔥:</strong> Trận này tôi làm Sói thì ông chuẩn bị nhận đạn nhé! NO LUCK ONLY SKILL!</div>
+        <div class="note-card" style="border-left-color: #22d3ee;"><strong style="color:#22d3ee;">Vinh ⚡:</strong> Gặp nhau ở vòng treo cổ em trai! PLAY SMART - STAY STRONG!</div>
+      `;
+
+      msgs.forEach(msg => {
+        html += `<div class="note-card"><strong style="color:var(--gold-accent);">Tôi (Chủ Phòng):</strong> ${msg}</div>`;
+      });
+
+      list.innerHTML = html;
+    }
+  </script>
+</body>
+</html>
